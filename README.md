@@ -6,10 +6,10 @@ This repository contains scripts for training and using a custom language model,
 
 ### 1. Install PyTorch with CUDA
 
-Visit [pytorch.org](https://pytorch.org/get-started/locally/) to get the command for your system. Common example for CUDA 12.1:
+Visit [pytorch.org](https://pytorch.org/get-started/locally/) to get the command for your system. Common example for CUDA 12.6:
 
 ```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
 ```
 
 ### 2. Install Core Dependencies
@@ -57,6 +57,16 @@ To prepare and mix the datasets:
 ```bash
 python prepare_dataset.py
 ```
+
+## Architecture
+
+The model is a **Universal (Recurrent) Transformer** designed for efficiency and reasoning density.
+
+- **Looping**: Reuses the same "brain" (layers) 12 times per token.
+- **Liquid Gating**: Uses adaptive gating to stabilize deep recurrence (inspired by Liquid Neural Networks).
+- **Data Mixing**: Interleaves general knowledge ("Textbooks") with high-intensity logic ("Orca-Math") to boost reasoning.
+
+For full technical details, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## File Descriptions
 
